@@ -3,88 +3,91 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import os
 
-# --- 1. data loading and preparation ---
+# --- 1. get the data ready ---
 
-# get the absolute path of the directory where this script is located.
+# this whole bit is just to find the csv file properly.
+# it finds where this python script is running...
 script_dir = os.path.dirname(os.path.abspath(__file__))
-
-# join the script's directory path with the CSV filename to create a full, reliable path.
+# ...and then looks for the csv in that same folder.
+# this way, you don't get that annoying 'file not found' error.
 csv_file_path = os.path.join(script_dir, 'immigration_gdp_data.csv')
 
+# okay, let's try to read the csv
 try:
-    # load the data directly from your local CSV file.
     df = pd.read_csv(csv_file_path)
 except FileNotFoundError:
-    print(f"Error: Could not find 'immigration_gdp_data.csv'.")
-    print(f"Looked for it at this location: {csv_file_path}")
-    print("Please make sure the CSV file is in the same folder as the Python script.")
+    print(f"error: can't find 'immigration_gdp_data.csv'.")
+    print(f"i looked for it here: {csv_file_path}")
+    print("just make sure the csv file is in the same folder as this script.")
     exit()
 
-# set 'Year' as the index for easier plotting
+# make 'Year' the index, just makes life easier for plotting
 df = df.set_index('Year')
 
-# interpolate the Immigrant Population data to create a smooth line for visualization
+# the immigration data only has points every few years,
+# so let's just draw straight lines between them (interpolate) to make the graph look smooth.
 df['Immigrant_Population'] = df['Immigrant_Population'].interpolate(method='linear')
 
 
-# --- 2. plotting the graph ---
+# --- 2. now for the actual graph ---
 
-# set up the figure and the primary axis (for Immigration)
+# set up the plot window and the first y-axis (the left one)
 fig, ax1 = plt.subplots(figsize=(15, 9))
 
-# plot Immigrant Population on the primary axis (ax1)
+# this one's for the immigration numbers, on the left
 color1 = 'tab:blue'
 ax1.set_xlabel('Year', fontsize=14)
 ax1.set_ylabel('Immigrant Population (in millions)', color=color1, fontsize=14)
 ax1.plot(df.index, df['Immigrant_Population'], color=color1, linewidth=3, label='Immigrant Population')
 ax1.tick_params(axis='y', labelcolor=color1, labelsize=12)
 ax1.tick_params(axis='x', labelsize=12)
-ax1.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, pos: f'{x/1e6:.1f}M'))
+ax1.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, pos: f'{x/1e6:.1f}M')) # formats the label to show "M" for millions
 
-# create the secondary axis for the actual GDP Per Capita value
+# now let's make the second y-axis (the right one) for gdp
 ax2 = ax1.twinx()
 color2 = 'tab:red'
-ax2.set_ylabel('GDP Per Capita (Value)', color=color2, fontsize=14) # UPDATED LABEL
-# PLOT THE ACTUAL 'GDP_per_Capita' COLUMN
-ax2.plot(df.index, df['GDP_per_Capita'], color=color2, linestyle='--', marker='o', markersize=4, label='GDP Per Capita') # UPDATED PLOT
+ax2.set_ylabel('GDP Per Capita (Value)', color=color2, fontsize=14)
+ax2.plot(df.index, df['GDP_per_Capita'], color=color2, linestyle='--', marker='o', markersize=4, label='GDP Per Capita')
 ax2.tick_params(axis='y', labelcolor=color2, labelsize=12)
-# format the y-axis to show thousands (e.g., 40k)
-ax2.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, pos: f'{x/1e3:.0f}k'))
+ax2.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, pos: f'{x/1e3:.0f}k')) # formats the label to show "k" for thousands
 
 
-# --- 3. adding sophistication (titles, legend, annotations) ---
+# --- 3. make it look good (titles, labels, and the story points) ---
 
-# title
-plt.title('UK Immigrant Population vs. GDP Per Capita (1990-2023)', fontsize=18, pad=20) # UPDATED TITLE
+# the main title
+plt.title('UK Immigrant Population vs. GDP Per Capita (1990-2023)', fontsize=18, pad=20)
 
-# unified legend for both axes
+# the trick to getting one legend for two different axes is to grab the labels from both
+# and then put them together in one box.
 lines, labels = ax1.get_legend_handles_labels()
 lines2, labels2 = ax2.get_legend_handles_labels()
 ax2.legend(lines + lines2, labels + labels2, loc='upper left', fontsize=12)
 
-# annotations for key events
+# --- here are the annotations for the key events ---
+
 # 2008 financial crisis
 ax1.axvline(x=2008, color='k', linestyle='--', linewidth=1, alpha=0.7)
-ax1.annotate('2008\nFinancial\nCrisis', xy=(2008, 48963), xycoords=ax2.get_yaxis_transform(), # Use ax2 coordinates for y
-             xytext=(2006, 0.85), textcoords='axes fraction', # Position annotation relative to axis
+ax1.annotate('2008\nFinancial\nCrisis',
+             xy=(2008, df.loc[2008, 'GDP_per_Capita']), # point the arrow at the 2008 gdp data point
+             xycoords=ax2.get_yaxis_transform(), # y-value needs to be based on the right axis (ax2)
+             xytext=(0.5, 0.85), # this just positions the text box so it looks neat
+             textcoords='axes fraction',
              arrowprops=dict(facecolor='black', shrink=0.05, width=1, headwidth=5),
              ha='center', fontsize=11, bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="black", lw=0.5))
 
-# 2016 brexit referendum
-ax1.axvline(x=2016, color='k', linestyle='--', linewidth=1, alpha=0.7)
-ax1.annotate('2016\nBrexit\nReferendum', xy=(2016, 9.36e6), xytext=(2013, 10.5e6),
-             arrowprops=dict(facecolor='black', shrink=0.05, width=1, headwidth=5),
-             ha='center', fontsize=11, bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="black", lw=0.5))
 
-# 2020 COVID-19 pandemic
+# 2020 covid-19 pandemic
 ax1.axvline(x=2020, color='k', linestyle='--', linewidth=1, alpha=0.7)
-ax1.annotate('2020\nCOVID-19\nPandemic', xy=(2020, 47144), xycoords=ax2.get_yaxis_transform(), # Use ax2 coordinates for y
-             xytext=(2018.5, 0.5), textcoords='axes fraction', # Position annotation
+ax1.annotate('2020\nCOVID-19\nPandemic',
+             xy=(2020, df.loc[2020, 'GDP_per_Capita']), # arrow points to the big 2020 gdp dip
+             xycoords=ax2.get_yaxis_transform(),
+             xytext=(0.85, 0.57),
+             textcoords='axes fraction',
              arrowprops=dict(facecolor='black', shrink=0.05, width=1, headwidth=5),
-             ha='right', fontsize=11, bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="black", lw=0.5))
+             ha='center', fontsize=11, bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="black", lw=0.5))
 
 
-# final touches
+# last few touches to make it clean
 fig.tight_layout()
 plt.grid(True, which='both', linestyle=':', linewidth=0.7)
 plt.show()
