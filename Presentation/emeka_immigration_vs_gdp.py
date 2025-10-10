@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import os
+from scipy.stats import pearsonr
 
 # --- 1. get the data ready ---
 
@@ -9,10 +10,10 @@ import os
 # it finds where this python script is running...
 script_dir = os.path.dirname(os.path.abspath(__file__))
 # ...and then looks for the csv in that same folder.
-# this way, you don't get that annoying 'file not found' error.
+# this way you don't get that 'file not found' error.
 csv_file_path = os.path.join(script_dir, 'immigration_gdp_data.csv')
 
-# okay, let's try to read the csv
+# let's try to read the csv
 try:
     df = pd.read_csv(csv_file_path)
 except FileNotFoundError:
@@ -85,6 +86,34 @@ ax1.annotate('2020\nCOVID-19\nPandemic',
              textcoords='axes fraction',
              arrowprops=dict(facecolor='black', shrink=0.05, width=1, headwidth=5),
              ha='center', fontsize=11, bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="black", lw=0.5))
+
+
+# --- 4. calculate stats and add the box ---
+
+from scipy.stats import pearsonr
+
+# drop any rows with missing values
+df_for_corr = df.dropna(subset=['Immigrant_Population', 'GDP_per_Capita'])
+
+# correlation and significance
+correlation, p_value = pearsonr(df_for_corr['Immigrant_Population'], df_for_corr['GDP_per_Capita'])
+std_immigrants = df['Immigrant_Population'].std()
+std_gdp = df['GDP_per_Capita'].std()
+
+# display formatting
+p_value_display = f"p < 0.001" if p_value < 0.001 else f"p = {p_value:.3f}"
+r2 = correlation**2
+
+# create stats text box
+stats_text = (
+    f"Key Statistics\n"
+    f"Correlation Coefficient: {correlation:.2f}\n"
+    f"R²: {r2:.2f}"
+)
+
+ax1.text(0.95, 0.25, stats_text, transform=ax1.transAxes, fontsize=12,
+         verticalalignment='top', horizontalalignment='right',
+         bbox=dict(boxstyle='round', facecolor='white', alpha=0.8, edgecolor='black'))
 
 
 # last few touches to make it clean
