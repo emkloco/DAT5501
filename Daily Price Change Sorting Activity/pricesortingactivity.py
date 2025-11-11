@@ -4,16 +4,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from time import perf_counter
 
-# Load cleaned CSV
+# load cleaned CSV
 script_dir = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(script_dir, 'gold_prices.csv')
 df = pd.read_csv(csv_path)
 
-# Convert to numeric, get daily changes
+# convert to numeric, get daily changes
 df['Close/Last'] = pd.to_numeric(df['Close/Last'], errors='coerce')
 delta = df['Close/Last'].diff().dropna().to_numpy()
 
-# Test sorting times
+# test sorting time
 max_n = min(365, len(delta))
 ns = np.arange(7, max_n + 1)
 times = []
@@ -30,12 +30,12 @@ for n in ns:
 ns = np.array(ns)
 times = np.array(times)
 
-# Fit to n·log2(n)
+# fit to n·log2(n)
 nlog = ns * np.log2(ns)
 c = (times @ nlog) / (nlog @ nlog)
 pred = c * nlog
 
-# Plot
+# plot
 plt.figure(figsize=(8,5))
 plt.plot(ns, times, 'o-', label='Measured')
 plt.plot(ns, pred, '--', label=f'n·log2(n), c={c:.3e}')

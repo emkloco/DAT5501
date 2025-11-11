@@ -3,16 +3,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
-# 1. Load CSV (replace 'gold_prices.csv' with your file)
+# load CSV (replace 'gold_prices.csv' with your file)
 df = pd.read_csv('gold_prices.csv')
 
-# Assuming your CSV has a column named 'Price'
+# assuming your CSV has a column named 'Price'
 prices = df['Close/Last'].values
 
-# 2. Calculate daily changes
+# calculate daily changes
 delta_p = np.diff(prices)  # P[n+1] - P[n]
 
-# 3. Measure sort times
+# measure sort times
 n_values = range(7, len(delta_p)+1)  # from 7 to max
 sort_times = []
 
@@ -23,7 +23,7 @@ for n in n_values:
     end = time.perf_counter()
     sort_times.append(end - start)
 
-# 4. Plot T vs n
+# plot T vs n
 plt.figure(figsize=(10,6))
 plt.plot(n_values, sort_times, label='Sort Time')
 plt.xlabel('Number of daily changes (n)')
