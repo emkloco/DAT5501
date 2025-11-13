@@ -80,7 +80,7 @@ try:
     plt.plot(x_full_range, np.polyval(overfit_coeffs, x_full_range), 'm--', 
              label='Polynomial order 7 (overfit)')
 
-    # add the fit limit line
+    # add the fit limit lines
     plt.axvline(x=fit_limit_year, color='black', linestyle='--', label=f'Fit limit ({fit_limit_year})')
 
     plt.title('Global Income Inequality: Polynomial Fits Comparison')
