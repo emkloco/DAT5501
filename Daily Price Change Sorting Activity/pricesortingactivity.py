@@ -9,7 +9,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(script_dir, 'gold_prices.csv')
 df = pd.read_csv(csv_path)
 
-# convert to numeric, get daily changes
+# convert to numeric, get daily change
 df['Close/Last'] = pd.to_numeric(df['Close/Last'], errors='coerce')
 delta = df['Close/Last'].diff().dropna().to_numpy()
 
