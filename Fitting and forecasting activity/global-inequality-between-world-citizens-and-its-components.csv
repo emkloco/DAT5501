@@ -1,0 +1,12 @@
+Entity,Code,Year,Inequality between country groups,Total inequality,Inequality within country groups
+World,OWID_WRL,1820,0.053,0.422,0.37
+World,OWID_WRL,1850,0.111,0.485,0.374
+World,OWID_WRL,1870,0.162,0.544,0.382
+World,OWID_WRL,1890,0.217,0.61,0.393
+World,OWID_WRL,1910,0.269,0.668,0.399
+World,OWID_WRL,1929,0.334,0.69,0.356
+World,OWID_WRL,1950,0.472,0.775,0.303
+World,OWID_WRL,1960,0.466,0.766,0.3
+World,OWID_WRL,1970,0.518,0.823,0.304
+World,OWID_WRL,1980,0.528,0.85,0.321
+World,OWID_WRL,1992,0.495,0.827,0.332
