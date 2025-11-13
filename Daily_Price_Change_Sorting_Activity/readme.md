@@ -1,4 +1,6 @@
 Gold Price Sorting Activity
+
+
 Verifying the time complexity of sorting algorithms using real-world market data.
 
 I grabbed daily gold price changes (deltas), ran benchmarks on numpy.sort with increasing dataset sizes, and fitted the empirical timing results against the theoretical curve to see how well they align.

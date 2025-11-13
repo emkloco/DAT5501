@@ -1,4 +1,5 @@
-UK Immigration & GDP: A Data Visualization
+UK Immigration & GDP Data Visualization
+
 This project provides a data visualization exploring the relationship between the UK's immigrant population and its GDP per capita from 1990 to 2023.
 
 The script processes and plots the data, highlighting the correlation and annotating key economic events like the 2008 financial crisis and the 2020 pandemic.
