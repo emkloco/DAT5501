@@ -81,7 +81,7 @@ ax1.set_title('Model comparison by polynomial order (1820-1992)', fontsize=14, f
 ax1.grid(True, alpha=0.3)
 ax1.set_xticks(results_df['order'])
 
-# second plot bic
+# second plot bics
 ax2.plot(results_df['order'], results_df['BIC'], 
          'o-', color='#ff8800', linewidth=2, markersize=8)
 ax2.set_xlabel('Polynomial order (n)', fontsize=12)
