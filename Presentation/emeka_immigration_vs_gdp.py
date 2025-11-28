@@ -116,7 +116,7 @@ ax1.text(0.95, 0.25, stats_text, transform=ax1.transAxes, fontsize=12,
          bbox=dict(boxstyle='round', facecolor='white', alpha=0.8, edgecolor='black'))
 
 
-# last few touches to make it clean
+# last touches to make it clean
 fig.tight_layout()
 plt.grid(True, which='both', linestyle=':', linewidth=0.7)
 plt.show()
