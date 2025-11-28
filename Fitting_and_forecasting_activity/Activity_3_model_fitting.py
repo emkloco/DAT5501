@@ -12,6 +12,7 @@ y_between = data['Inequality between country groups'].values
 y_within = data['Inequality within country groups'].values
 
 # pick which one you wanna analyse
+
 y = y_total  # swap to y_between or y_within if you want
 
 def fit_polynomial(x, y, degree):
@@ -31,7 +32,7 @@ for order in orders:
     # fit the model
     coeffs = fit_polynomial(X, y, order)
     
-    # get predictions
+    # get prediction
     y_pred = predict_polynomial(X, coeffs)
     
     # now calculate all the metrics
