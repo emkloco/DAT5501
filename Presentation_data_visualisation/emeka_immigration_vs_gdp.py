@@ -4,7 +4,7 @@ import matplotlib.ticker as mticker
 import os
 from scipy.stats import pearsonr
 
-# --- 1. get the data ready ---
+# 1 - get the data ready
 
 # this whole bit is just to find the csv file properly.
 # it finds where this python script is running...
@@ -30,7 +30,7 @@ df = df.set_index('Year')
 df['Immigrant_Population'] = df['Immigrant_Population'].interpolate(method='linear')
 
 
-# --- 2. now for the actual graph ---
+# 2 - now for the actual graph
 
 # set up the plot window and the first y-axis (the left one)
 fig, ax1 = plt.subplots(figsize=(15, 9))
@@ -53,7 +53,7 @@ ax2.tick_params(axis='y', labelcolor=color2, labelsize=12)
 ax2.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, pos: f'{x/1e3:.0f}k')) # formats the label to show "k" for thousands
 
 
-# --- 3. make it look good (titles, labels, and the story points) ---
+# 3 - make it look good (titles, labels, and the story points)
 
 # the main title
 plt.title('UK Immigrant Population vs. GDP Per Capita (1990-2023)', fontsize=18, pad=20)
@@ -64,7 +64,7 @@ lines, labels = ax1.get_legend_handles_labels()
 lines2, labels2 = ax2.get_legend_handles_labels()
 ax2.legend(lines + lines2, labels + labels2, loc='upper left', fontsize=12)
 
-# --- here are the annotations for the key events ---
+# here are the annotations for the key events
 
 # 2008 financial crisis
 ax1.axvline(x=2008, color='k', linestyle='--', linewidth=1, alpha=0.7)
@@ -88,7 +88,7 @@ ax1.annotate('2020\nCOVID-19\nPandemic',
              ha='center', fontsize=11, bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="black", lw=0.5))
 
 
-# --- 4. calculate stats and add the box ---
+# 4 - calculate stats and add the box
 
 from scipy.stats import pearsonr
 
