@@ -1,19 +1,24 @@
-Unit Testing Activity
+# Unit Testing: Data Normalization
 
-A straightforward example of a Python function with its corresponding unit tests.
+## Overview
+This module implements a **Min-Max Normalization** algorithm, a common technique in Data Science preprocessing to scale numerical data into a range of [0, 1]. 
 
-I wrote a basic addition function, then built a test suite using Python's built-in unittest framework to validate its behavior with integers and floats.
+The project demonstrates **Test-Driven Development (TDD)**, ensuring the function is robust against edge cases such as empty datasets, negative numbers, and type errors.
 
-Content:
+## Key Features
+- **Algorithm:** Implements mathematical Min-Max scaling: $x' = \frac{x - \min(x)}{\max(x) - \min(x)}$
+- **Robustness:** Includes error handling for non-numeric inputs and empty lists.
+- **Zero-Division Protection:** Handles edge cases where the dataset has zero variance (all numbers are identical).
 
-milan_function.py: The script defining the core function. It adds two numbers and includes basic type checking.
-milan_function_unit_test.py: The test script. It runs a series of assertions to confirm the function returns the correct sums for different numeric inputs.
+## Test Suite
+The test suite (`test_data_processor.py`) validates:
+1.  **Standard inputs:** Verifies correct math for mixed integers/floats.
+2.  **Negative numbers:** Ensures range calculations work across zero.
+3.  **Edge cases:** Validates behavior for empty lists and single-value lists.
+4.  **Type Safety:** Ensures specific errors are raised for invalid inputs.
 
-To run:
+## Usage
+Run the automated test suite from the terminal:
 
-No special libraries are needed; unittest is part of the standard library.
-
-Run the test script from your terminal:
-python milan_function_unit_test.py
-
-The tests will execute and print the results to the console.
+```bash
+python test_data_processor.py

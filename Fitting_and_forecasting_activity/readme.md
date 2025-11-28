@@ -1,23 +1,20 @@
-Global Inequality Forecasting & Model Fitting
+# Global Inequality Forecasting & Polynomial Regression
 
+## Overview
+An analysis of global income inequality trends using polynomial regression. This project fits various polynomial models (degrees 1–15) to historical Gini index data (1820–1980) to evaluate their predictive power for post-1980 trends.
 
-An analysis of polynomial model fitting using historical data on global income inequality.
+## Key Features
+- **Model Selection:** Implements Reduced Chi-Squared ($\chi^2_\nu$) and Bayesian Information Criterion (BIC) to identify the optimal polynomial order.
+- **Bias-Variance Tradeoff:** Visualizes the concepts of underfitting (Order 1) versus overfitting (Order 7+) on historical data.
+- **Forecasting:** Tests the selected models against "unseen" reality data from 1980–1992.
 
-I took Gini index data up to 1980, fitted it with polynomial models of varying complexity, and used a reduced chi-squared analysis to find the optimal fit. The goal was to see how well these models could predict post-1980 trends and to visualize the concepts of underfitting and overfitting.
+## Files
+- `forecastgraph.py`: Main script for data loading, model fitting, and plotting.
+- `global-inequality.csv`: Historical dataset of global inequality metrics.
+- `polynomial_comparison.png`: Visualization of Chi-Squared and BIC scores per model order.
 
-Content:
+## Usage
+Run the script to generate the model comparison and forecast plots:
 
-forecastgraph.py: The main script. It loads the data, performs the polynomial fits, calculates the goodness-of-fit for each model order, and generates the comparison plots.
-global-inequality-between-world-citizens-and-its-components.csv: The historical data on global inequality.
-
-Global Income Inequality...png: The first plot, showing the underfit, best-fit, and overfit models against the historical data.
-
-Model Comparison...png: The second plot, which visualizes the reduced chi-squared values to identify the best-performing model order.
-To run:
-
-You will need pandas, numpy, and matplotlib installed.
-
-Run the script from your terminal:
+```bash
 python forecastgraph.py
-
-The script will display the two analysis plots.

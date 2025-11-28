@@ -1,24 +1,20 @@
-Gold Price Sorting Activity
+# Algorithmic Complexity Analysis: Gold Price Sorting
 
+## Overview
+This project validates the time complexity of sorting algorithms using real-world financial data. By benchmarking `numpy.sort` against daily gold price fluctuations, we empirically verify the theoretical $O(n \log n)$ complexity curve.
 
-Verifying the time complexity of sorting algorithms using real-world market data.
+## Key Features
+- **Real-World Data:** Uses daily Open-High-Low-Close (OHLC) gold price data to calculate volatility deltas.
+- **Performance Benchmarking:** Utilizes `time.perf_counter` for high-precision measurement of sorting operations.
+- **Complexity Fitting:** Fits empirical timing data against the theoretical $n \log n$ curve to validate algorithmic efficiency.
 
-I grabbed daily gold price changes (deltas), ran benchmarks on numpy.sort with increasing dataset sizes, and fitted the empirical timing results against the theoretical curve to see how well they align.
+## Files
+- `pricesortingactivity.py`: The main script for calculating deltas, running benchmarks, and plotting results.
+- `gold_price.csv`: Raw historical gold price data.
+- `daily_sorting_activity.png`: Output visualization comparing measured times vs. theoretical predictions.
 
-Content:
+## Usage
+Run the analysis script to generate the complexity graph:
 
-pricesortingactivity.py: The script. It calculates the price differentials, times the sorting operation using perf_counter, and plots the measured time vs. the expected complexity.
-
-gold_price.csv: The raw OHLC price data.
-
-daily_sorting_activity.png: The resulting plot showing the fit between the actual sort times and the model.
-
-
-To run:
-
-You'll need pandas, numpy, and matplotlib.
-
-Run the script:
+```bash
 python pricesortingactivity.py
-
-It generates the plot in the same folder.
