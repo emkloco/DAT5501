@@ -1,24 +1,20 @@
-UK Immigration & GDP Data Visualization
+# Economic Correlation Analysis: UK Immigration vs. GDP
 
-This project provides a data visualization exploring the relationship between the UK's immigrant population and its GDP per capita from 1990 to 2023.
+## Overview
+This project utilizes Exploratory Data Analysis (EDA) to investigate the correlation between the UK's immigrant population and GDP per Capita from 1990 to 2023. It aims to visualize demographic shifts alongside economic output.
 
-The script processes and plots the data, highlighting the correlation and annotating key economic events like the 2008 financial crisis and the 2020 pandemic.
+## Key Features
+- **Dual-Axis Visualization:** Plots two distinct scales (Population vs. Currency) on a single timeline for direct comparison.
+- **Data Storytelling:** Annotates significant economic events (2008 Financial Crisis, COVID-19 Pandemic) to provide context to the data.
+- **Statistical Analysis:** Calculates the Pearson correlation coefficient ($r$) and $R^2$ values to quantify the relationship.
 
-Contents:
+## Files
+- `emeka_immigration_vs_gdp.py`: The analysis script that processes the CSV and generates the dual-axis chart.
+- `immigration_gdp_data.csv`: Source dataset containing population and GDP figures.
+- `Immigrant_vs_gdp.png`: The final annotated visualization.
 
-emeka_immigration_vs_gdp.py: The Python script that uses pandas and matplotlib to generate the visualization.
+## Usage
+Run the script to generate the visualization and print statistical stats:
 
-immigration_gdp_data.csv: The source data for the project.
-
-UK Immigrant Population vs. GDP Per Capita (1990-2023).png: The final chart produced by the script.
-
-
-
-To Run:
-
-Ensure the required libraries (pandas, matplotlib, scipy) are installed.
-
-Execute the script from your terminal:
+```bash
 python emeka_immigration_vs_gdp.py
-
-The script will generate and display the chart. The CSV data file must be in the same directory.
