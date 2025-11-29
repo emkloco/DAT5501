@@ -24,9 +24,10 @@ This project investigates the relationship between demographic shifts and econom
 
 2. **Run the script:**
 Open your terminal in this folder and run:
-code
-Bash
-python emeka_immigration_vs_gdp.py
+    bash
+   python emeka_immigration_vs_gdp.py
+
+
 
 3. **View results:**
 
