@@ -14,16 +14,18 @@ I have organised the work into specific skill-based directories:
 
 | Project | Key Skills Demonstrated |
 | :--- | :--- |
+| **[US Election Analysis](./Pandas_election_analysis_activity)** | Exploratory Data Analysis (EDA), Pandas grouping & aggregation, Large dataset processing. |
 | **[Global Inequality Forecasting](./Fitting_and_forecasting_activity)** | Polynomial Regression, Model Selection (BIC/Chi-Squared), Bias-Variance Tradeoff. |
 | **[UK Economic Correlation](./Presentation_data_visualisation)** | Data Storytelling, Dual-Axis Visualisation, Statistical Correlation ($R^2$). |
+| **[Date Duration Calculator](./Duration_calculator_unit_testing)** | Date/Time Vectorization (NumPy), Input Validation, Unit Testing time-series logic. |
 | **[Gold Price Algorithm Analysis](./Daily_price_changes_sorting_activity)** | Empirically validating Big-O time complexity using real-world financial data. |
 | **[Car Safety Classification](./Decision_tree_optimisations)** | Machine Learning, Hyperparameter Optimization, Decision Trees. |
+| **[Financial Modelling](./Interest_calculator_unit_testing)** | Test-Driven Development (TDD), Mathematical Modelling, Edge-case handling. |
 | **[Automated Data Pipeline](./CircleCI)** | CI/CD principles, Synthetic Data Generation, Automated Regression Testing. |
-| **[Financial Modelling](./Interest_calculator_unit_testing)** | Test-Driven Development (TDD), Mathematical Modelling. |
 
 ## Tools & Technologies
 *   **Language:** Python 3.9+
-*   **Data Analysis:** pandas, NumPy, SciPy
+*   **Data Analysis:** Pandas, NumPy, SciPy
 *   **Visualisation:** Matplotlib
 *   **Machine Learning:** scikit-learn
 *   **Quality Assurance:** pytest, unittest
