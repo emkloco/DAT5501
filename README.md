@@ -3,30 +3,37 @@
 ![Language](https://img.shields.io/badge/Python-3.9%2B-blue)
 ![Status](https://img.shields.io/badge/Status-Complete-green)
 
-## Project Overview
-This portfolio demonstrates advanced data analysis, visualization, and software engineering practices developed during the DAT5501 module. It includes statistical modeling of global inequality, economic correlation analysis, and algorithmic complexity benchmarking.
+## Overview
+This repository contains my portfolio for the **DAT5501: Analysis, Software and Career Practice** module. It demonstrates the technical skills and professional workflows I have developed during this module, ranging from statistical forecasting to automated software testing.
+
+The portfolio is structured as a collection of modular projects, each addressing specific data analysis challenges or software engineering principles.
 
 ## Portfolio Highlights
 
-### 1. Global Inequality Forecasting
-**Key Skills:** Polynomial Regression, BIC/Chi-Squared Model Selection.
-- Analyzed historical Gini index data (1820-1990).
-- Implemented a model selection pipeline to identify overfitting vs. underfitting.
-- **Outcome:** Determined that an Order-5 polynomial provides the optimal balance of bias and variance.
+I have organised the work into specific skill-based directories:
 
-### 2. Economic Correlation Analysis (UK)
-**Key Skills:** Data Storytelling, Dual-Axis Visualization (Matplotlib).
-- Correlated UK Immigration statistics with GDP per Capita.
-- Annotated key economic events (2008 Crisis, COVID-19).
-- **Outcome:** Strong positive correlation ($R^2 = 0.74$) observed.
+| Project | Key Skills Demonstrated |
+| :--- | :--- |
+| **[Global Inequality Forecasting](./Fitting_and_forecasting_activity)** | Polynomial Regression, Model Selection (BIC/Chi-Squared), Bias-Variance Tradeoff. |
+| **[UK Economic Correlation](./Presentation_data_visualisation)** | Data Storytelling, Dual-Axis Visualisation, Statistical Correlation ($R^2$). |
+| **[Gold Price Algorithm Analysis](./Daily_price_changes_sorting_activity)** | Empirically validating Big-O time complexity using real-world financial data. |
+| **[Car Safety Classification](./Decision_tree_optimisations)** | Machine Learning, Hyperparameter Optimization, Decision Trees. |
+| **[Automated Data Pipeline](./CircleCI)** | CI/CD principles, Synthetic Data Generation, Automated Regression Testing. |
+| **[Financial Modelling](./Interest_calculator_unit_testing)** | Test-Driven Development (TDD), Mathematical Modelling. |
 
-### 3. Algorithmic Complexity Benchmarking
-**Key Skills:** Algorithm Analysis, Big-O Notation.
-- Benchmarked sorting algorithms against real-world Gold Price volatility data.
-- Validated $O(n \log n)$ complexity empirically.
+## Tools & Technologies
+*   **Language:** Python 3.9+
+*   **Data Analysis:** pandas, NumPy, SciPy
+*   **Visualisation:** Matplotlib
+*   **Machine Learning:** scikit-learn
+*   **Quality Assurance:** pytest, unittest
 
-## Installation & Usage
+## How to Run
+To reproduce any analysis in this portfolio, clone the repository and install the standard dependencies:
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/emkloco/DAT5501.git
+```bash
+git clone https://github.com/emkloco/DAT5501.git
+pip install pandas numpy matplotlib scipy scikit-learn pytest
+
+
+Specific instructions for running each script are provided in the README files within each sub-folder.
