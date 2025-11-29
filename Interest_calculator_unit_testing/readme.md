@@ -1,32 +1,21 @@
 # Compound Interest Financial Modeler
 
-![Language](https://img.shields.io/badge/Python-3.9%2B-blue)
-![Status](https://img.shields.io/badge/Status-Tested-green)
+## Overview
+This project implements a financial forecasting tool to project savings growth over time. It calculates year-on-year compound interest and algorithmically determines the time required for a principal investment to double in value. It is built using Test-Driven Development (TDD) principles.
 
-## Project Overview
-This module demonstrates the application of Python to financial forecasting. It implements a compound interest calculator that projects savings growth over time and algorithmically determines the "doubling time" of an investment.
+## Key Features
+- **Financial Modeling:** Implements the compound interest formula to project annual growth.
+- **Doubling Logic:** Uses iterative logic to calculate the precise "doubling time" of an investment.
+- **Robust Testing:** Includes a comprehensive unit test suite to verify mathematical accuracy against standard financial rules.
 
-The project emphasizes **Test-Driven Development (TDD)**, utilizing a robust unit test suite to verify mathematical accuracy against standard financial formulas (e.g., Rule of 72).
-
-## Module Highlights
-
-### 1. Financial Growth Projection
-**Key Skills:** Mathematical Modeling, Iterative Logic.
-- Implements the compound interest formula $A = P(1 + r)^t$ to project year-on-year growth.
-- Outputs a formatted financial schedule to the console.
-
-### 2. Algorithmic Forecasting
-**Key Skills:** While-Loop Logic, Conditional Flow.
-- Calculates the precise number of years required for the principal investment to double in value.
-- Handles edge cases dynamically (e.g., high interest rates vs. low interest rates).
-
-### 3. Automated Quality Assurance
-**Key Skills:** Unit Testing, `unittest` Framework.
-- Validates logic against known financial constants.
-- Ensures the model scales correctly regardless of principal size ($1 vs $1,000,000).
+## Files
+- `interest_calculator.py`: The main script that performs the calculations and prints the financial schedule.
+- `test_interest_calculator.py`: The unit test suite using `unittest` to validate the logic.
 
 ## Usage
+Run the main calculator:
 
-**1. Run the Calculator:**
 ```bash
 python interest_calculator.py
+Run the automated tests:
+
