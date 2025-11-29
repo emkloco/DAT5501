@@ -17,5 +17,10 @@ Run the main calculator:
 
 ```bash
 python interest_calculator.py
+
+
 Run the automated tests:
 
+code
+Bash
+python test_interest_calculator.py
