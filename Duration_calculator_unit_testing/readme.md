@@ -21,8 +21,8 @@ The module includes both a user-interactive mode and a batch-processing mode tha
 ## How to Run
 
 ```bash
-# Run the calculator (User Input + CSV Mode)
+# run the calculator (User Input + CSV Mode)
 python duration_calculator.py
 
-# Run the test suite
+# run the test suite
 python test_duration_calculator.py

@@ -12,7 +12,7 @@ Using the UCI Car Evaluation dataset, I trained multiple Decision Tree Classifie
 
 ## Dataset
 **UCI Car Evaluation Dataset**  
-A collection of 1728 records classifying cars into four categories (unacceptable, acceptable, good, very good) based on buying price, maintenance cost, number of doors, etc.
+A collection is fetched from uci repository which contains 1728 records classifying cars into four categories (unacceptable, acceptable, good, very good) based on buying price, maintenance cost, number of doors, etc.
 
 ## Usage
 Run the script to generate the optimization graph and print the top features to the console:
